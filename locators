@@ -1,0 +1,51 @@
+
+// Registration page elements
+#input-firstname
+#input-lastname
+#input-email
+#input-telephone
+#input-password
+#input-confirm
+input[value='0']
+div[id='content'] h1
+fieldset[id='account'] legend
+input[value='1'][name='agree']
+input[value='Continue']
+a[title='My Account'] span[class='hidden-xs hidden-sm hidden-md']
+
+
+// My Account dropdown elements
+a[title='My Account'] span[class='hidden-xs hidden-sm hidden-md']
+li[class='dropdown open'] li:nth-child(2) a:nth-child(1)
+li[class='dropdown open'] li:nth-child(1) a:nth-child(1)
+
+
+//search box elements
+.fa.fa-search
+input[placeholder='Search']
+
+// Login page elements
+#input-email
+#input-password
+input[value='Login']
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://naveenautomationlabs.com/opencart/');
+
+  await page.locator('#top-links').getByRole('link', { name: 'Login' }).click();
+
+  await page.locator('#top-links').getByRole('link', { name: 'Login' }).click();
+  await page.getByRole('link', { name: 'Continue' }).click();
+  await page.getByRole('textbox', { name: '* First Name' }).click();
+  await page.getByRole('textbox', { name: '* Last Name' }).click();
+  await page.getByRole('textbox', { name: '* E-Mail' }).click();
+  await page.getByRole('textbox', { name: '* Telephone' }).click();
+  await page.getByRole('textbox', { name: '* Password', exact: true }).click();
+  await page.getByRole('textbox', { name: '* Password Confirm' }).click();
+  await page.getByRole('radio', { name: 'Yes' }).check();
+  await page.getByRole('radio', { name: 'No' }).check();
+  await page.getByRole('checkbox').check();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  awaih1:has-text('Your Account Has Been Created!')
+});
