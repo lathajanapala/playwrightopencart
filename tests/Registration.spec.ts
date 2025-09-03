@@ -17,7 +17,7 @@ const userData = {
   email: RandomDataUtil.getEmail(),
   telephone: RandomDataUtil.getPhoneNumber(),
   password,
-  // confirm: password,
+  confirm: password,
 };
 
   await test.step('Navigate to Home', async () => {
@@ -39,7 +39,7 @@ const userData = {
   });
 
   await test.step('Validate confirmation', async () => {
-    const confirmationText = (await registration.conformationMessage())?.trim() ?? '';
+    const confirmationText = (await registration.confirmationMessage())?.trim() ?? '';
     console.log('Confirmation:', confirmationText);
     expect(confirmationText).toContain('Your Account Has Been Created!');
     await expect(page).toHaveURL(/account\/success|route=account\/success/i);

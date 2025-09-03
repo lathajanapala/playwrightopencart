@@ -83,7 +83,7 @@ export class RegistrationPage{
     async clickContinue(): Promise<void> {
         await this.continueBtn.click();
     }
-    async conformationMessage(): Promise<string | null> {
+    async confirmationMessage(): Promise<string | null> {
         return await this.confirmMessage.textContent();
     }
 
@@ -104,8 +104,9 @@ async completeRegistration(userData: {
         await this.setEmail(userData.email);
         await this.setTelephoneNumber(userData.telephone);
         await this.setPassword(userData.password);
-        const confirmValue = userData.confirm ?? userData.password;
-        await this.setConfirmPassword(confirmValue);
+        // const confirmValue = userData.confirm ?? userData.password;
+        // await this.setConfirmPassword(confirmValue);
+        await this.setConfirmPassword(userData.confirm);
         await this.setPrivacypolicy();
         await this.page.screenshot({
             path: 'screenshots/registration_form_filled.png',
