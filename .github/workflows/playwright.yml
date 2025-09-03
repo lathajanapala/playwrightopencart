@@ -1,6 +1,5 @@
 name: Playwright Tests
 
-
 on:
   push:
     branches: [ main, master ]
@@ -10,7 +9,7 @@ on:
 permissions:
   contents: read
   pages: write
-  id-token: write
+  id-token: write  # keep as a proper comment
 
 concurrency:
   group: "pages"
@@ -22,25 +21,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-
       - name: Install dependencies
         run: npm ci
-
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-
       - name: Run Playwright tests
         run: npx playwright test
-
       - name: Generate Allure report
         if: always()
         run: npx allure generate ./allure-results --clean -o ./allure-report || true
-
-      # Bundle reports for Pages
       - name: Prepare static site
         if: always()
         run: |
@@ -56,11 +48,9 @@ jobs:
             <li><a href="./playwright/">Playwright HTML Report</a></li>
           </ul>
           EOF
-
       - name: Setup Pages
         if: always()
         uses: actions/configure-pages@v5
-
       - name: Upload Pages artifact
         if: always()
         uses: actions/upload-pages-artifact@v3
@@ -68,13 +58,14 @@ jobs:
           path: ./site
 
   deploy:
-        needs: test
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-        runs-on: ubuntu-latest
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        steps:
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+    needs: test
+    # Only deploy on direct pushes to main/master (PRs will skip)
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
