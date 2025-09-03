@@ -17,9 +17,9 @@ export class RandomDataUtil{
        const password = faker.internet.password();
        return password;
     }
-   //  static getConfirmPassword(password: string){
-   //     return password;
-   //  }
+    static getConfirmPassword(password: string){
+       return password;
+    }
     static getwrongConfirmPassword(){
       return faker.internet.password()
    }

@@ -104,15 +104,15 @@ async completeRegistration(userData: {
         await this.setEmail(userData.email);
         await this.setTelephoneNumber(userData.telephone);
         await this.setPassword(userData.password);
-        // await this.setConfirmPassword(userData.password);
-        await this.setConfirmPassword(userData.confirm);
+        const confirmValue = userData.confirm ?? userData.password;
+        await this.setConfirmPassword(confirmValue);
         await this.setPrivacypolicy();
         await this.page.screenshot({
             path: 'screenshots/registration_form_filled.png',
             fullPage: true
         });
         await this.clickContinue();
-        
+
 
     }
 

@@ -17,7 +17,7 @@ const userData = {
   email: RandomDataUtil.getEmail(),
   telephone: RandomDataUtil.getPhoneNumber(),
   password,
-  confirm: password,
+  // confirm: password,
 };
 
   await test.step('Navigate to Home', async () => {
