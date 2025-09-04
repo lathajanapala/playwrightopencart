@@ -39,7 +39,7 @@ const userData = {
   });
 
   await test.step('Validate confirmation', async () => {
-    const confirmationText = (await registration.conformationMessage())?.trim() ?? '';
+    const confirmationText = (await registration.confirmationMessage())?.trim() ?? '';
     console.log('Confirmation:', confirmationText);
     expect(confirmationText).toContain('Your Account Has Been Created!');
     await expect(page).toHaveURL(/account\/success|route=account\/success/i);

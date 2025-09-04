@@ -18,7 +18,10 @@ export default defineConfig({
     // headless: false,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
-    permissions: ['geolocation']
+    permissions: ['geolocation'],
+    // launchOptions: {
+    //   // slowMo: 50 // Adjust the value (in milliseconds) as needed
+    // }
   },
   // grep: /@master/,
   projects: [

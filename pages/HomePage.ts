@@ -7,6 +7,8 @@ export class HomePage {
     private readonly linkLogIn: Locator;
     private readonly textSearchBox: Locator;
     private readonly btnSearch: Locator;
+    private readonly components:Locator;
+    private readonly monitors:Locator
 
 
     constructor(page: Page) {
@@ -18,6 +20,8 @@ export class HomePage {
         // this.newcustomerBtn =page.locator('div.well a.btn.btn-primary')
         this.textSearchBox = page.locator('input[placeholder="Search"]');
         this.btnSearch = page.locator('.fa.fa-search');
+        this.components = page.locator('li.dropdown > a.dropdown-toggle:has-text("Components")');
+        this.monitors = page.locator('li.dropdown .dropdown-menu a', { hasText: 'Monitors (2)' });
 
     }
     //Action methods
@@ -68,7 +72,23 @@ export class HomePage {
         } catch (error) {
             console.error('Error clicking on Search button:', error);
         }
+
     }
+    async clickComponent() {
+        try {
+            await this.components.click();
+        } catch (error) {
+            console.error('Error clicking on Components link:', error);
+        }
+    }
+    async clickMonitors(){
+        try {
+            await this.monitors.click();
+        } catch (error) {
+            console.error('Error clicking on Monitors link:', error);
+        }
+    }
+
 
 
 
