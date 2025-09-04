@@ -19,9 +19,9 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     permissions: ['geolocation'],
-    launchOptions: {
-      slowMo: 50 // Adjust the value (in milliseconds) as needed
-    }
+    // launchOptions: {
+    //   // slowMo: 50 // Adjust the value (in milliseconds) as needed
+    // }
   },
   // grep: /@master/,
   projects: [
