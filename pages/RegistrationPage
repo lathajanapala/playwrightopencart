@@ -8,7 +8,7 @@ export class RegistrationPage{
     private readonly telephone:Locator;
     private readonly password:Locator;
     private readonly confirmPassword:Locator;
-    private readonly subsciptionRadioYes:Locator;
+    private readonly subscriptionRadioYes:Locator;
     private readonly suscriptionRadioNo:Locator;
     private readonly privacyPolicyCheckBox:Locator;
     private readonly continueBtn:Locator;
@@ -37,7 +37,7 @@ export class RegistrationPage{
         this.confirmPassword = page.locator("#input-confirm");
 
         // Radios / checkbox / buttons
-        this.subsciptionRadioYes = page.getByRole('radio', { name: 'Yes' });
+        this.subscriptionRadioYes = page.getByRole('radio', { name: 'Yes' });
         this.suscriptionRadioNo = page.getByRole('radio', { name: 'No' });
         this.privacyPolicyCheckBox = page.getByRole('checkbox');
         this.continueBtn = page.getByRole('button', { name: 'Continue' });
@@ -88,7 +88,7 @@ export class RegistrationPage{
     }
 
     async setSubscriptionRadioYes(){
-        await this.subsciptionRadioYes.click();
+        await this.subscriptionRadioYes.click();
     }
 
 async completeRegistration(userData: {

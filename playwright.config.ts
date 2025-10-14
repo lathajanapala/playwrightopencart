@@ -12,6 +12,7 @@ export default defineConfig({
     ['allure-playwright'] // make sure: npm i -D allure-playwright
   ],
   use: {
+    baseURL:'https://restful-booker.herokuapp.com', // Add your base URL here
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',

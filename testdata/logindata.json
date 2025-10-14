@@ -1,13 +1,13 @@
 [
   {
     "testName": "Valid login",
-    "email": "pavanol@abc.com",
-    "password": "test@123",
+    "email": "pushpalatha7@gmail.com",
+    "password": "123456",
     "expected": "success"
   },
   {
     "testName": "Invalid login",
-    "email": "abcxyz@xyz.com",
+    "email": "abcxy12@xyz.com",
     "password": "abcxyx",
     "expected": "failure"
   }
